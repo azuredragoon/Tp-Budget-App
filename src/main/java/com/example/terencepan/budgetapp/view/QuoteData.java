@@ -1,10 +1,10 @@
 package com.example.terencepan.budgetapp.view;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.util.List;
+
 /**
  * Created by Terence Pan on 6/22/2017.
  */
@@ -131,5 +131,11 @@ public class QuoteData {
 
     public void setLastUpdated(String lastUpdated) {
         this.lastUpdated = lastUpdated;
+    }
+
+    @Override
+    public String toString(){
+
+        return symbol + exchangeName;
     }
 }
