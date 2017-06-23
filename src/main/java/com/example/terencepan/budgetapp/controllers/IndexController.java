@@ -12,14 +12,16 @@ import org.springframework.web.client.RestTemplate;
 @Controller
 public class IndexController {
 
-    public String apiCall = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBB&apikey=F9PQ";
+    public String apiCall = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=";
+    public String symbol = "IBB";
+    public String apiKey = "&apikey=F9PQ";
 
     @RequestMapping("/")
     public String index(Model model){
 
         //temp
         RestTemplate restTemplate = new RestTemplate();
-        Quote quote = restTemplate.getForObject(apiCall, Quote.class);
+        Quote quote = restTemplate.getForObject(apiCall + symbol + apiKey, Quote.class);
         System.out.println(quote.toString());
         model.addAttribute("symbol", quote.getQuotedata().getSymbol());
         model.addAttribute("latestPrice", quote.getQuotedata().getLatestPrice());
