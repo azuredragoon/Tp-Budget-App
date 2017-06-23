@@ -19,4 +19,10 @@ public class Quote {
         this.quotedata = quotedata;
     }
 
+    //Fix with real toString
+    @Override
+    public String toString(){
+
+        return quotedata.getSymbol() + quotedata.getExchangeName();
+    }
 }

@@ -133,9 +133,5 @@ public class QuoteData {
         this.lastUpdated = lastUpdated;
     }
 
-    @Override
-    public String toString(){
 
-        return symbol + exchangeName;
-    }
 }
