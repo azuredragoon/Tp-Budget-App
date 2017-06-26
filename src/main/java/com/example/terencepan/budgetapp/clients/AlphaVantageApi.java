@@ -5,4 +5,15 @@ package com.example.terencepan.budgetapp.clients;
  */
 public class AlphaVantageApi {
 
+    private String searchSymbolString;
+
+    public String getSearchSymbolString() {
+        return searchSymbolString;
+    }
+
+    public void setSearchSymbolString(String searchSymbolString) {
+        this.searchSymbolString = searchSymbolString;
+    }
+
+
 }
