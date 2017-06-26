@@ -1,5 +1,6 @@
 package com.example.terencepan.budgetapp.controllers;
 
+import com.example.terencepan.budgetapp.services.CallStockApi;
 import com.example.terencepan.budgetapp.view.Quote;
 import com.example.terencepan.budgetapp.view.QuoteCall;
 import org.springframework.stereotype.Controller;
@@ -13,11 +14,7 @@ import org.springframework.web.client.RestTemplate;
 @Controller
 public class IndexController {
 
-    private String apiCall = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=";
-    private String symbol = "IBB";
-    private String apiKey = "&apikey=F9PQ";
     private String currencySign = "$";
-    private String symbolparam;
 
     @RequestMapping("/")
     public String index(Model model){
@@ -35,12 +32,11 @@ public class IndexController {
     public String getSearch(@RequestParam(value="searchString",required=false) String searchSymbol, Model model) {
         if(searchSymbol==null)
             return "index";
-        RestTemplate restTemplate = new RestTemplate();
 
-        Quote quote = restTemplate.getForObject(apiCall + searchSymbol + apiKey, Quote.class);
+        CallStockApi callStockApi = new CallStockApi(searchSymbol);
+        Quote quote = callStockApi.getQuoteData();
 
         //
-
         QuoteCall stockCall = new QuoteCall();
         stockCall.setSearchString(searchSymbol);
         model.addAttribute("quoteSearch", stockCall);
@@ -65,9 +61,8 @@ public class IndexController {
     @RequestMapping("/s")
     public String indexSearch(@RequestParam("searchSymbol") String searchSymbol, Model model){
 
-        RestTemplate restTemplate = new RestTemplate();
-        Quote quote = restTemplate.getForObject(apiCall + searchSymbol + apiKey, Quote.class);
-
+        CallStockApi callStockApi = new CallStockApi(searchSymbol);
+        Quote quote = callStockApi.getQuoteData();
         //
 
         QuoteCall stockCall = new QuoteCall();
