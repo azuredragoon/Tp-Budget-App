@@ -42,13 +42,13 @@ public class IndexController {
         model.addAttribute("quoteSearch", stockCall);
         model.addAttribute("quoteCall", stockCall);
 
-
         //
         model.addAttribute("searchString", "");
 
         model.addAttribute("symbol", quote.getQuotedata().getSymbol());
         model.addAttribute("exchangeName", quote.getQuotedata().getExchangeName());
         model.addAttribute("latestPrice", currencySign + quote.getQuotedata().getLatestPrice());
+        model.addAttribute("lastUpdated", quote.getQuotedata().getLastUpdated());
         model.addAttribute("amtChange", currencySign + quote.getQuotedata().getPriceChange());
         model.addAttribute("perChange", quote.getQuotedata().getPriceChangePercentage());
         model.addAttribute("volume", quote.getQuotedata().getVolume());
@@ -70,13 +70,13 @@ public class IndexController {
         model.addAttribute("quoteSearch", stockCall);
         model.addAttribute("quoteCall", stockCall);
 
-
         //
         model.addAttribute("searchString", "");
 
         model.addAttribute("symbol", quote.getQuotedata().getSymbol());
         model.addAttribute("exchangeName", quote.getQuotedata().getExchangeName());
         model.addAttribute("latestPrice", currencySign + quote.getQuotedata().getLatestPrice());
+        model.addAttribute("lastUpdated", quote.getQuotedata().getLastUpdated());
         model.addAttribute("amtChange", currencySign + quote.getQuotedata().getPriceChange());
         model.addAttribute("perChange", quote.getQuotedata().getPriceChangePercentage());
         model.addAttribute("volume", quote.getQuotedata().getVolume());
