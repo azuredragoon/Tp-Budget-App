@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
  * Created by Terence Pan on 5/7/2017.
  */
 @Controller
-public class IndexController {
+public class SavedSearchesController {
 
     private String currencySign = "$";
 
-    @RequestMapping("/")
+    @RequestMapping("/saved-searches")
     public String index(Model model){
 
         QuoteCall stockCall = new QuoteCall();
@@ -24,10 +24,10 @@ public class IndexController {
         model.addAttribute("searchString", "");
 
         model.addAttribute("message", "Run a search for info to show up here!");
-        return "index";
+        return "savedsearches";
     }
 
-    @GetMapping(value = "/s")
+    @GetMapping(value = "/saved-searches/s")
     public String getSearch(@RequestParam(value="searchString",required=false) String searchSymbol, Model model) {
         if(searchSymbol==null)
             return "index";
@@ -54,10 +54,10 @@ public class IndexController {
         model.addAttribute("dailyLow", currencySign + quote.getQuotedata().getDailyLow());
         model.addAttribute("dailyHigh", currencySign + quote.getQuotedata().getDailyHigh());
         model.addAttribute("previousClose", currencySign + quote.getQuotedata().getPreviousClose());
-        return "index";
+        return "savedsearches";
     }
 
-    @RequestMapping("/s")
+    @RequestMapping("/saved-searches/s")
     public String indexSearch(@RequestParam("searchSymbol") String searchSymbol, Model model){
 
         CallStockApi callStockApi = new CallStockApi(searchSymbol);
@@ -82,7 +82,7 @@ public class IndexController {
         model.addAttribute("dailyLow", currencySign + quote.getQuotedata().getDailyLow());
         model.addAttribute("dailyHigh", currencySign + quote.getQuotedata().getDailyHigh());
         model.addAttribute("previousClose", currencySign + quote.getQuotedata().getPreviousClose());
-        return "index";
+        return "savedsearches";
     }
 
 }
