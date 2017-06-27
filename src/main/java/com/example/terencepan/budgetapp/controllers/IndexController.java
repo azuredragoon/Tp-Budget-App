@@ -6,7 +6,6 @@ import com.example.terencepan.budgetapp.view.QuoteCall;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by Terence Pan on 5/7/2017.
