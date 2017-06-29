@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
  */
 public class AlphaVantageApi {
 
-    private String apiCall = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE";
+    private String apiCall = "https://www.alphavantage.co/query?function=";
     private String symbolString = "&symbol=";
     private String apiKey = "&apikey=F9PQ";
 
@@ -30,6 +30,7 @@ public class AlphaVantageApi {
 
         RestTemplate restTemplate = new RestTemplate();
         String uri = apiCall + stockApiFunctions.GLOBAL_QUOTE + symbolString + stockSymbol + apiKey;
+        System.out.println(uri);
         quoteData = restTemplate.getForObject(uri, Quote.class);
 
     }
