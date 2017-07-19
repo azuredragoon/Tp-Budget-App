@@ -30,7 +30,6 @@ public class AlphaVantageApi {
 
         RestTemplate restTemplate = new RestTemplate();
         String uri = apiCall + stockApiFunctions.GLOBAL_QUOTE + symbolString + stockSymbol + apiKey;
-        System.out.println(uri);
         quoteData = restTemplate.getForObject(uri, Quote.class);
 
     }
